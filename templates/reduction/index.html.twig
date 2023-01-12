@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReductionController!{% endblock %}
+
+{% block body %}
+  <h1> Reduction </h1>
+
+{{ form(Formulaire) }}
+
+
+{% for i in 0..10 %}
+    * {{ i }}
+{% endfor %}
+
+
+{% endblock %}
