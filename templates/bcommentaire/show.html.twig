@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bcommentaire{% endblock %}
+
+{% block body %}
+    <h1>Bcommentaire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bcommentaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ bcommentaire.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bcommentaire_index') }}">back to list</a>
+
+    <a href="{{ path('app_bcommentaire_edit', {'id': bcommentaire.id}) }}">edit</a>
+
+    {{ include('bcommentaire/_delete_form.html.twig') }}
+{% endblock %}

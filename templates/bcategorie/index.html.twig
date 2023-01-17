@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bcategorie index{% endblock %}
+
+{% block body %}
+    <h1>Liste de categories</h1>
+
+
+
+<div class="card-group">
+ {% for bcategorie in bcategories %}
+            
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">{{ bcategorie.id }}</h5>
+            <p class="card-text">{{ bcategorie.nom }}</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">
+                        <a href="{{ path('app_bcategorie_show', {'id': bcategorie.id}) }}">show</a>
+                        <a href="{{ path('app_bcategorie_edit', {'id': bcategorie.id}) }}">edit</a>
+                        <a href="{{ path('voir_article', {'id': bcategorie.id}) }}">Voir les articles correspondant</a>
+
+            </small>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+ 
+        
+
+    <a href="{{ path('app_bcategorie_new') }}">Create new</a>
+{% endblock %}

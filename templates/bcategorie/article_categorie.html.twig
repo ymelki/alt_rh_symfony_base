@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bcategorie index{% endblock %}
+
+{% block body %}
+    <h1>Catégorie : {{ bcategorie.nom }}</h1>
+
+
+
+<div class="card-group">
+ {% for bcategorie in liste_article %}
+            
+        <div class="card">
+            <div class="card-body">
+            <h5 class="card-title">{{ bcategorie.id }}</h5>
+            <p class="card-text">{{ bcategorie.titre }}</p>
+            <p class="card-text">{{ bcategorie.contenu }}</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted"> 
+            </small>
+            </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+ 
+        
+
+ {% endblock %}

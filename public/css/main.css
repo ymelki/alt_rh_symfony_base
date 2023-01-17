@@ -1,0 +1,17 @@
+h1 {
+    color:white;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+nav {
+    background-color: black !important;
+    color: white !important;
+}
+.navbar, .navbar-brand, .nav-link, th , td, nav, .card-title, .card-text, .card-body {
+    background-color: black !important;
+
+    color:white !important;
+}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Bcommentaire{% endblock %}
+
+{% block body %}
+    <h1>Create new Bcommentaire</h1>
+
+    {{ include('bcommentaire/_form.html.twig') }}
+
+    <a href="{{ path('app_bcommentaire_index') }}">back to list</a>
+{% endblock %}
