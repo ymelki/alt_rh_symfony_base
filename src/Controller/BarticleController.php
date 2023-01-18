@@ -63,6 +63,7 @@ class BarticleController extends AbstractController
 
         // recuperer tout les commantaires correspondant à l'identifiant de l'URL
         $commentaire=$bcommentaireRepository->findBy(['barticles' => $barticle->getId()]);
+        
         return $this->renderForm('barticle/show2.html.twig', [
             'barticle' => $barticle,
             'commentaire' => $commentaire,
