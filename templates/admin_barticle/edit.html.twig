@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Barticle{% endblock %}
+
+{% block body %}
+    <h1>Edit Barticle</h1>
+
+    {{ include('admin_barticle/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_barticle_index') }}">back to list</a>
+
+    {{ include('admin_barticle/_delete_form.html.twig') }}
+{% endblock %}

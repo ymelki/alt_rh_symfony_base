@@ -27,6 +27,9 @@ class Barticle
     #[ORM\OneToMany(mappedBy: 'barticles', targetEntity: Bcommentaire::class)]
     private Collection $bcommentaires;
 
+    #[ORM\Column(length: 255)]
+    private ?string $filenameimage = null;
+
     public function __construct()
     {
         $this->bcommentaires = new ArrayCollection();
@@ -103,6 +106,18 @@ class Barticle
                 $bcommentaire->setBarticles(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFilenameimage(): ?string
+    {
+        return $this->filenameimage;
+    }
+
+    public function setFilenameimage(string $filenameimage): self
+    {
+        $this->filenameimage = $filenameimage;
 
         return $this;
     }

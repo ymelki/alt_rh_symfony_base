@@ -3,15 +3,16 @@
 namespace App\Controller;
 
 use App\Form\ReductionType;
+use App\Service\Calcul;
 use Symfony\Component\HttpFoundation\Request;
- use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ReductionController extends AbstractController
 {
     #[Route('/reduction', name: 'app_reduction')]
-    public function index(Request $request): Response
+    public function index(Calcul $calcul,    Request $request): Response
     {
         $formulaire = $this->createForm(ReductionType::class);
 
@@ -28,12 +29,13 @@ class ReductionController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $formulaire->getData();
-            $calcul=$task['prixInitial']*$task['pourcentageReduction']/100;
+            $result=$calcul->calculer($task['prixInitial'], $task['pourcentageReduction']);
+            //  $calcul=$task['prixInitial']*$task['pourcentageReduction']/100;
             // ... perform some action, such as saving the task to the database
      
             return $this->render('reduction/reduction_envoye.html.twig', [
              'data' => $task,
-             'calcul' => $calcul
+             'calcul' => $result
          ]);
         }
 

@@ -2,6 +2,47 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 
-{% block body %}
-<h1>Accueil</h1>
+{% block body %}  
+</div>
+        
+    <div class="imgt">
+        <br><br><br><br><br><br><br>
+        <h1 style="width:100;   color:#ff8e00 !important; " class="display-2 text-center">
+
+      ACCUEIL</h1>
+     </div>
+    
+     <div class="container">
+ <br><br><br><br> 
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for barticle in barticles %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ asset('uploads/'  ~ barticle.filenameimage  ) }}" class="card-img-top" alt="...">
+      <div class="card-body">
+         <p class="card-text">  {{ barticle.contenu }}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Voir plus</small>
+      </div>
+    </div>
+  </div>  
+   {%  endfor %}
+     
+</div>
+
+ <br><br><br><br> 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 {% endblock %}
