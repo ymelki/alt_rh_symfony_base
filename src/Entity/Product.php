@@ -2,6 +2,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,6 +29,14 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categories = null;
+
+    #[ORM\ManyToMany(targetEntity: Mcommande::class, mappedBy: 'products')]
+    private Collection $mcommandes;
+ 
+    public function __construct()
+    {
+        $this->mcommandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -81,4 +91,32 @@ class Product
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Mcommande>
+     */
+    public function getMcommandes(): Collection
+    {
+        return $this->mcommandes;
+    }
+
+    public function addMcommande(Mcommande $mcommande): self
+    {
+        if (!$this->mcommandes->contains($mcommande)) {
+            $this->mcommandes->add($mcommande);
+            $mcommande->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMcommande(Mcommande $mcommande): self
+    {
+        if ($this->mcommandes->removeElement($mcommande)) {
+            $mcommande->removeProduct($this);
+        }
+
+        return $this;
+    }
+ 
 }

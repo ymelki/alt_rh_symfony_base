@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Mcommande{% endblock %}
+
+{% block body %}
+    <h1>Edit Mcommande</h1>
+
+    {{ include('mcommande/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_mcommande_index') }}">back to list</a>
+
+    {{ include('mcommande/_delete_form.html.twig') }}
+{% endblock %}

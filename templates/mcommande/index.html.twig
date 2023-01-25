@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mcommande index{% endblock %}
+
+{% block body %}
+    <h1>Mcommande index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Info</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mcommande in mcommandes %}
+            <tr>
+                <td>{{ mcommande.id }}
+                {% for mcommande2 in mcommande.products %}
+                {{ mcommande2.id }}
+                {% endfor %}
+                 
+                </td>
+                <td>{{ mcommande.info }}</td>
+                <td>
+                    <a href="{{ path('app_mcommande_show', {'id': mcommande.id}) }}">show</a>
+                    <a href="{{ path('app_mcommande_edit', {'id': mcommande.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mcommande_new') }}">Create new</a>
+{% endblock %}

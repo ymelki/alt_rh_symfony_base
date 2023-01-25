@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Mcommande{% endblock %}
+
+{% block body %}
+    <h1>Create new Mcommande</h1>
+
+    {{ include('mcommande/_form.html.twig') }}
+
+    <a href="{{ path('app_mcommande_index') }}">back to list</a>
+{% endblock %}

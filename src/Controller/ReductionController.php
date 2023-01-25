@@ -29,9 +29,9 @@ class ReductionController extends AbstractController
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
             $task = $formulaire->getData();
-            $result=$calcul->calculer($task['prixInitial'], $task['pourcentageReduction']);
-            //  $calcul=$task['prixInitial']*$task['pourcentageReduction']/100;
-            // ... perform some action, such as saving the task to the database
+        $result=$calcul->calculer($task['prixInitial'], $task['pourcentageReduction']);
+       //$calcul=$task['prixInitial']*$task['pourcentageReduction']/100;
+        // ... perform some action, such as saving the task to the database
      
             return $this->render('reduction/reduction_envoye.html.twig', [
              'data' => $task,

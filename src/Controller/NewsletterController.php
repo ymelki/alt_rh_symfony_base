@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\Mail;
 use App\Form\NewsletterType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NewsletterController extends AbstractController
 {
     #[Route('/newsletter', name: 'app_newsletter')]
-    public function index(Request $request): Response
+    public function index(Mail $mail, Request $request): Response
     {
         $formulaire = $this->createForm(NewsletterType::class);
 
@@ -27,6 +28,9 @@ class NewsletterController extends AbstractController
            // $form->getData() holds the submitted values
            // but, the original `$task` variable has also been updated
            $task = $formulaire->getData();
+           $mail->envoie($task['email'],
+           "Inscription à la newsletter",
+           "Un nouvel utilisateur s'est inscrit !");
     
            // ... perform some action, such as saving the task to the database
     

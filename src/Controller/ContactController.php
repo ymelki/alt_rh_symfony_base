@@ -3,7 +3,10 @@
 namespace App\Controller;
  
 use App\Form\ContactType;
+use App\Service\Mail;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request): Response
+    public function index(  Mail $mail, Request $request): Response
     {
         $formulaire = $this->createForm(ContactType::class);
 
@@ -28,6 +31,13 @@ class ContactController extends AbstractController
      
             // ... perform some action, such as saving the task to the database
      
+            $mail->envoie( 
+                        $task['nom'],
+                        $task['sujet'],
+                        $task['sujet']
+                    );
+            
+
             return $this->render('contact/contact_envoye.html.twig', [
              'data' => $task
          ]);
