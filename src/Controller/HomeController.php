@@ -12,15 +12,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index( 
-        Information $info,   
+    public function index(    
         Request $request,
     BarticleRepository $barticleRepository   ): Response
     { 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'barticles' => $barticleRepository->findAll(),
-            'tab'=> $info->creertableauhtml(15)
-        ]);
+         ]);
     }
 }
